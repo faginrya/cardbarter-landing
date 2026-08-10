@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CardBarter — Turn cards you don't love into cards you do</title>
+  <meta name="description" content="CardBarter is the first modern trading platform that makes trading cards actually possible again. No 13% tax. No lowball offers. No hostile groups." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            'green-700': '#1E5741',
+            'green-900': '#143A2C',
+            'paper-200': '#F4EFE6',
+            'paper-100': '#F7F4ED',
+            'ink-900': '#1F2823',
+            'ember-600': '#B96A3C',
+            'gold-600': '#A87B2D',
+            'red-signal': '#BE3A2E',
+            'blue-700': '#35618E',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-paper-100 text-ink-900 font-sans antialiased">
+
+  <!-- Nav -->
+  <nav class="nav-pill" role="navigation" aria-label="Main">
+    <a href="#" class="brand-link">
+      <img src="assets/icon.svg" alt="" class="brand-icon" />
+      <span class="font-extrabold text-sm tracking-tight" style="color: var(--green-700);">CardBarter</span>
+    </a>
+    
+    <div class="hidden md:flex items-center gap-5">
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#how" class="nav-link">How it works</a>
+    </div>
+    
+    <a href="#early-access" class="cta-primary" style="flex-shrink: 0;">
+      Get the app
+      <span class="cta-icon" aria-hidden="true">→</span>
+    </a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="min-h-[100dvh] flex flex-col items-center text-center px-6 pt-56 pb-16 lg:pt-60">
+    <div class="container" style="max-width: 900px;">
+      <p class="eyebrow mb-6 reveal-up">Trade at full value</p>
+      
+      <h1 class="display-hero mb-6 reveal-up" style="transition-delay: 100ms;">
+        Turn cards you don't love into cards you do.
+      </h1>
+      
+      <p class="body-large max-w-[56ch] mx-auto mb-10 reveal-up" style="transition-delay: 200ms;">
+        Simply, at full value, with collectors who get it. No 13% tax. No lowball offers. No hostile groups.
+      </p>
+      
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-14 reveal-up" style="transition-delay: 300ms;">
+        <a href="#early-access" class="cta-primary">
+          Get early access
+          <span class="cta-icon" aria-hidden="true">→</span>
+        </a>
+        <p class="text-sm" style="color: rgba(31, 40, 35, 0.55);">$4.99 one-time. $1.99/mo sync.</p>
+      </div>
+    </div>
+    
+    <div class="container max-w-[1000px] reveal-up" style="transition-delay: 400ms;">
+      <div class="hero-frame">
+        <img src="assets/hero-base.png" alt="Collector's desk with three trading cards and an iPhone showing the CardBarter app" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature bento -->
+  <section class="section" id="how">
+    <div class="container">
+      <div class="bento-grid">
+        <!-- Full value -->
+        <div class="bento-col-7 card-shell reveal-up">
+          <div class="card-inner">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full font-bold text-sm" style="background: var(--green-700); color: var(--paper-100);">✓</span>
+              <span class="eyebrow" style="color: rgba(31, 40, 35, 0.5);">Full value trades</span>
+            </div>
+            <h2 class="display-section mb-4">$100 of cards for $100 of cards.</h2>
+            <p class="body-large max-w-[48ch]">No percentage skim. Both sides walk away knowing they got the better half of the deal.</p>
+          </div>
+        </div>
+        
+        <!-- Toggle card -->
+        <div class="bento-col-5 card-shell card-green reveal-up" style="transition-delay: 100ms;">
+          <div class="card-inner">
+            <h3 class="text-xl font-bold mb-3">Get or give?</h3>
+            <p class="text-sm mb-6" style="color: rgba(247, 244, 237, 0.75);">Toggle to see how matching works for you.</p>
+            
+            <div class="flex rounded-full p-1 mb-5" style="background: rgba(247, 244, 237, 0.12);">
+              <button id="wantBtn" class="toggle-pill flex-1 py-2.5 px-4 rounded-full text-sm font-bold" style="background: var(--red-signal); color: #fff;">I want cards</button>
+              <button id="haveBtn" class="toggle-pill flex-1 py-2.5 px-4 rounded-full text-sm font-bold" style="color: rgba(247, 244, 237, 0.7); background: transparent;">I have cards</button>
+            </div>
+            
+            <p id="toggleText" class="text-sm" style="color: rgba(247, 244, 237, 0.8);">Mark cards you're searching for. CardBarter finds collectors who have them and want what you've got.</p>
+          </div>
+        </div>
+        
+        <!-- Structure -->
+        <div class="bento-col-4 card-shell reveal-up" style="transition-delay: 200ms;">
+          <div class="card-inner card-paper">
+            <h3 class="text-xl font-bold mb-3">Structure, not chaos</h3>
+            <p class="body-small">Payment holds, ID verification, and reputation scores keep both sides honest.</p>
+          </div>
+        </div>
+        
+        <!-- Fast collection -->
+        <div class="bento-col-4 card-shell reveal-up" style="transition-delay: 300ms;">
+          <div class="card-inner card-paper">
+            <h3 class="text-xl font-bold mb-3">Your collection, fast</h3>
+            <p class="body-small">Snap or search. The app recognizes your cards, grades, and sets in minutes.</p>
+          </div>
+        </div>
+        
+        <!-- Built by collector -->
+        <div class="bento-col-4 card-shell reveal-up" style="transition-delay: 400ms;">
+          <div class="card-inner card-paper">
+            <h3 class="text-xl font-bold mb-3">Built by a collector</h3>
+            <p class="body-small">For people who actually love the hobby. No suits, no suits.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="pricing" style="padding-top: 4rem;">
+    <div class="container max-w-[800px] text-center">
+      <h2 class="display-section mb-12 reveal-up">Honest pricing.</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6 max-w-[700px] mx-auto">
+        
+        <div class="card-shell reveal-up" style="transition-delay: 100ms;">
+          <div class="card-inner text-center">
+            <p class="eyebrow mb-3" style="color: rgba(31, 40, 35, 0.5);">Unlock trading</p>
+            <p class="text-5xl font-extrabold mb-2" style="color: var(--green-700);">$4.99</p>
+            <p class="body-small">One-time unlock. Trade forever.</p>
+          </div>
+        </div>
+        
+        <div class="card-shell card-green reveal-up" style="transition-delay: 200ms;">
+          <div class="card-inner text-center">
+            <p class="eyebrow mb-3" style="color: rgba(247, 244, 237, 0.6);">Keep it synced</p>
+            <p class="text-5xl font-extrabold mb-2">$1.99<span class="text-xl font-medium">/mo</span></p>
+            <p class="text-sm" style="color: rgba(247, 244, 237, 0.8);">Cloud sync, backups, CSV exports.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" id="early-access">
+    <div class="container">
+      <div class="card-shell card-green reveal-up">
+        <div class="card-inner text-center py-12 lg:py-16">
+          <h2 class="display-section mb-4">Ready to trade?</h2>
+          <p class="max-w-[48ch] mx-auto mb-8" style="color: rgba(247, 244, 237, 0.8);">Join the early access list. Be first to turn cards you don't love into cards you do.</p>
+          <a href="#" class="cta-secondary">
+            Get early access
+            <span class="cta-icon" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container flex flex-col md:flex-row justify-between items-start gap-8">
+      <div class="flex items-center gap-2">
+        <img src="assets/icon.svg" alt="" class="brand-icon" />
+        <span class="font-extrabold" style="color: var(--green-700);">CardBarter</span>
+      </div>
+      
+      <div class="flex gap-8">
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+      </div>
+      
+      <p class="text-xs" style="color: rgba(31, 40, 35, 0.4);">© 2026 CardBarter. Built by a collector.</p>
+    </div>
+  </footer>
+
+  <script>
+    const wantBtn = document.getElementById('wantBtn');
+    const haveBtn = document.getElementById('haveBtn');
+    const toggleText = document.getElementById('toggleText');
+    const redSignal = '#BE3A2E';
+    const blue700 = '#35618E';
+    
+    function activateWant() {
+      wantBtn.style.background = redSignal;
+      wantBtn.style.color = '#fff';
+      haveBtn.style.background = 'transparent';
+      haveBtn.style.color = 'rgba(247, 244, 237, 0.7)';
+      toggleText.textContent = "Mark cards you're searching for. CardBarter finds collectors who have them and want what you've got.";
+    }
+    
+    function activateHave() {
+      haveBtn.style.background = blue700;
+      haveBtn.style.color = '#fff';
+      wantBtn.style.background = 'transparent';
+      wantBtn.style.color = 'rgba(247, 244, 237, 0.7)';
+      toggleText.textContent = "List cards you're willing to trade. CardBarter matches you with collectors searching for them.";
+    }
+    
+    wantBtn.addEventListener('click', activateWant);
+    haveBtn.addEventListener('click', activateHave);
+    
+    // IntersectionObserver reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+    
+    document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
