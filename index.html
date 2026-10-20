@@ -32,6 +32,7 @@
     }
   </script>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="capture-form.css" />
 </head>
 <body class="bg-paper-100 text-ink-900 font-sans antialiased">
 
@@ -173,10 +174,67 @@
         <div class="card-inner text-center py-12 lg:py-16">
           <h2 class="display-section mb-4">Ready to trade?</h2>
           <p class="max-w-[48ch] mx-auto mb-8" style="color: rgba(247, 244, 237, 0.8);">Join the early access list. Be first to turn cards you don't love into cards you do.</p>
-          <a href="#" class="cta-secondary">
-            Get early access
-            <span class="cta-icon" aria-hidden="true">→</span>
-          </a>
+          <div class="capture-block">
+            <form class="capture-form" data-capture-form="waitlist" novalidate>
+              <div class="capture-field">
+                <label for="waitlist-email">Email address</label>
+                <input id="waitlist-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required />
+              </div>
+              <input type="hidden" name="source" value="homepage" />
+              <input type="hidden" name="meta[section]" value="early-access" />
+              <div class="capture-honeypot" aria-hidden="true">
+                <label for="waitlist-website-url">Website</label>
+                <input id="waitlist-website-url" name="website_url" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+              <label class="capture-check" for="waitlist-consent">
+                <input id="waitlist-consent" name="consent" type="checkbox" required />
+                <span>I want to join the CardBarter early access list. I understand I'll receive launch updates and can unsubscribe anytime.</span>
+              </label>
+              <button type="submit" class="capture-submit">
+                Get early access
+                <span class="cta-icon" aria-hidden="true">→</span>
+              </button>
+              <p class="capture-status" data-capture-status role="status" aria-live="polite"></p>
+            </form>
+
+            <details class="capture-details">
+              <summary>Apply to be a Founding Member</summary>
+              <form class="capture-form" data-capture-form="founding" novalidate>
+                <p class="capture-consent">I apply to be a Founding Member. I understand this means early TestFlight access, a commitment to upload at least 20 cards, active trading, and providing feedback. No purchase required.</p>
+                <div class="capture-field">
+                  <label for="founding-email">Email address</label>
+                  <input id="founding-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required />
+                </div>
+                <div class="capture-field">
+                  <label for="founding-tools">What do you use to sell or trade now?</label>
+                  <input id="founding-tools" name="sellTradeTools" type="text" placeholder="eBay, shows, Discord, a shop…" required />
+                </div>
+                <div class="capture-field">
+                  <label for="founding-volume">Roughly how many cards do you trade a month?</label>
+                  <input id="founding-volume" name="monthlyVolume" type="text" inputmode="numeric" placeholder="10" required />
+                </div>
+                <input type="hidden" name="meta[section]" value="founding-member" />
+                <div class="capture-honeypot" aria-hidden="true">
+                  <label for="founding-website-url">Website</label>
+                  <input id="founding-website-url" name="website_url" type="text" tabindex="-1" autocomplete="off" />
+                </div>
+                <label class="capture-check" for="founding-upload">
+                <input id="founding-upload" name="agreeUploadCards" type="checkbox" required />
+                <span>I agree to upload at least 20 cards to the catalog.</span>
+              </label>
+                <label class="capture-check" for="founding-trade">
+                <input id="founding-trade" name="agreeUseApp" type="checkbox" required />
+                <span>I agree to actively use the app for trades.</span>
+              </label>
+                <label class="capture-check" for="founding-feedback">
+                <input id="founding-feedback" name="agreeProvideFeedback" type="checkbox" required />
+                <span>I agree to provide feedback during the beta.</span>
+              </label>
+                <button type="submit" class="capture-submit">Apply</button>
+                <p class="capture-status" data-capture-status role="status" aria-live="polite"></p>
+              </form>
+            </details>
+          </div>
         </div>
       </div>
     </div>
@@ -238,5 +296,13 @@
     
     document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
   </script>
+  <script>
+    // Task 0 verified this origin live on 2026-10-20: GET /health -> HTTP 200,
+    // { ok: true, service: "cardswap-api", status: "healthy" } at
+    // https://cardswapapi-production.up.railway.app. The landing apex is a static Cloudflare
+    // Pages host and must never be used as the API base.
+    window.__CAPTURE_API_BASE__ = 'https://cardswapapi-production.up.railway.app';
+  </script>
+  <script type="module" src="capture-form.mjs"></script>
 </body>
 </html>
